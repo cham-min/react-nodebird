@@ -56,9 +56,9 @@ export const addPost = (data) => ({
 export const addComment = (data) => ({
   type: ADD_COMMENT_REQUEST,
   data,
-})
+});
 
-const dummyPost = () => {
+const dummyPost = () => ({
   id: 2,
   content: "더미데이터",
   User: {
@@ -67,7 +67,7 @@ const dummyPost = () => {
   },
   Images: [],
   Comments: [],
-};
+});
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -77,7 +77,7 @@ const reducer = (state = initialState, action) => {
         addPostLoading: true,
         addPostDone: false,
         addPostError: null,
-      }
+      };
     case ADD_POST_SUCCESS:
       return {
         ...state,
@@ -90,14 +90,14 @@ const reducer = (state = initialState, action) => {
         ...state,
         addCommentLoading: false,
         addCommentError: action.error,
-      }
+      };
     case ADD_COMMENT_REQUEST:
       return {
         ...state,
         addCommentLoading: true,
         addCommentDone: false,
         addCommentError: null,
-      }
+      };
     case ADD_COMMENT_SUCCESS:
       return {
         ...state,
@@ -109,11 +109,10 @@ const reducer = (state = initialState, action) => {
         ...state,
         addPostLoading: false,
         addPostError: action.error,
-      }
+      };
     default:
       return state;
   }
 };
 
 export default reducer;
-
