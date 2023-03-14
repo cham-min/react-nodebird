@@ -20,17 +20,15 @@ import {
 } from "../reducers/user";
 
 function logInAPI(data) {
-  return axios.post("/api/login", data);
+  return axios.post("/user/login", data);
 }
 
 function* logIn(action) {
   try {
-    // const result = yield call(logInAPI, action.data);
-    yield delay(1000);
+    const result = yield call(logInAPI, action.data);
     yield put({
       type: LOG_IN_SUCCESS,
-      //   data: result.data,
-      data: action.data,
+      data: result.data,
     });
   } catch (err) {
     yield put({
@@ -41,7 +39,7 @@ function* logIn(action) {
 }
 
 function logOutAPI() {
-  return axios.post("/api/logout");
+  return axios.post("/user/logout");
 }
 
 function* logOut() {
@@ -61,7 +59,7 @@ function* logOut() {
 }
 
 function signUpAPI(data) {
-  return axios.post("http://localhost:3065/user", data);
+  return axios.post("/user", data);
 }
 
 function* signUp(action) {
@@ -80,7 +78,7 @@ function* signUp(action) {
 }
 
 function followAPI() {
-  return axios.post("/api/follow");
+  return axios.post("/follow");
 }
 
 function* follow(action) {
@@ -100,7 +98,7 @@ function* follow(action) {
 }
 
 function unfollowAPI() {
-  return axios.post("/api/unfollow");
+  return axios.post("/unfollow");
 }
 
 function* unfollow(action) {
