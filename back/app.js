@@ -7,6 +7,7 @@ const dotenv = require("dotenv");
 
 const userRouter = require("./routes/user");
 const postRouter = require("./routes/post");
+const postsRouter = require("./routes/posts");
 const db = require("./models");
 const passportConfig = require("./passport");
 
@@ -47,16 +48,9 @@ app.get("/", (req, res) => {
   res.send("hello api");
 });
 
-app.get("/posts", (req, res) => {
-  res.json([
-    { id: 1, content: "hello" },
-    { id: 2, content: "hello2" },
-    { id: 3, content: "hello3" },
-  ]);
-});
-
 app.use("/user", userRouter);
 app.use("/post", postRouter);
+app.use("/posts", postsRouter);
 
 app.listen(3065, () => {
   console.log("SERVER IS RUNNING");
