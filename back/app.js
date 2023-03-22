@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
+const path = require("path");
 const passport = require("passport");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
@@ -24,6 +25,7 @@ passportConfig();
 
 app.use(morgan("dev"));
 app.use(express.json());
+app.use("/", express.static(path.join(__dirname, "uploads")));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser("nodebirdsecret"));
 app.use(
