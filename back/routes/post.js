@@ -9,7 +9,7 @@ const { isLoggedIn } = require("./middlewares");
 const router = express.Router();
 
 try {
-  fs.accessSync("/uploads");
+  fs.accessSync("uploads");
 } catch (error) {
   console.log("uploads 디렉토리 생성");
   fs.mkdirSync("uploads");
