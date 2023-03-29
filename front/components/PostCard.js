@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
-import moment from "moment";
 import { Avatar, Button, Card, List, Popover } from "antd";
 import {
   EllipsisOutlined,
@@ -22,8 +21,6 @@ import {
   RETWEET_REQUEST,
   REMOVE_POST_REQUEST,
 } from "../reducers/post";
-
-moment.locale("ko");
 
 const PostCard = ({ post }) => {
   const dispatch = useDispatch();
@@ -134,9 +131,6 @@ const PostCard = ({ post }) => {
               )
             }
           >
-            <div style={{ float: "right" }}>
-              {moment(post.createdAt).fromNow()}
-            </div>
             <Card.Meta
               avatar={
                 <Link href={`/user/${post.Retweet.User.id}`}>
@@ -151,9 +145,6 @@ const PostCard = ({ post }) => {
           </Card>
         ) : (
           <>
-            <div style={{ float: "right" }}>
-              {moment(post.createdAt).fromNow()}
-            </div>
             <Card.Meta
               avatar={
                 <Link href={`/user/${post.User.id}`}>
